@@ -1,0 +1,24 @@
+name: Production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    if: "!contains(github.event.commits[0].message, 'version:')"
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup environment
+      uses: actions/setup-node@v1
+
+    - name: Generate version
+      env:
+        GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}
+      run: |
+        npm install --no-package-lock --no-save @semantic-release/{changelog,git}
+        npx semantic-release

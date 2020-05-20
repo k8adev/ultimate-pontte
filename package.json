@@ -1,6 +1,6 @@
 {
   "name": "ultimate-pontte",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Coding Challenge for Front-End position at @pontte",
   "main": "public/app.js",
   "scripts": {
