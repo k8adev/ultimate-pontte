@@ -1,10 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-/* eslint-disable */
+import Pages from './pages';
+
 render(
-  <div>
-    Hello Pontte!
-  </div>,
+  <Pages />,
   document.getElementById('root'),
 );
