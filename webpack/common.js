@@ -14,10 +14,13 @@ const extractCss = () => (NODE_ENV === 'production' ? MiniCssExtractPlugin.loade
 module.exports = {
   mode: NODE_ENV,
   context: resolve(__dirname, '..'),
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: resolve(PATH_PUBLIC),
     publicPath: '/',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -33,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },

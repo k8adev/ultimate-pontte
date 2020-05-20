@@ -5,7 +5,7 @@ module.exports = merge.smart(common, {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         enforce: 'pre',
         exclude: /node_modules/,
         loader: 'eslint-loader',
