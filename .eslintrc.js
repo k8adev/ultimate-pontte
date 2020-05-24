@@ -4,6 +4,17 @@ module.exports = {
     browser: true,
   },
   rules: {
-    'react/jsx-props-no-spreading': 'off'
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '*.spec.js',
+          '*.config.js',
+          'webpack/*',
+          'jest.*.js',
+        ],
+      },
+    ],
+    'react/jsx-props-no-spreading': 'off',
   },
 };
