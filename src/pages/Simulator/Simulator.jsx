@@ -1,72 +1,97 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
 
-import { getSimulatorConditions, setSimulatorAmount } from './../../store/simulator';
+import { getSimulatorConditions } from '../../store/simulator';
 
-const Simulator = () => {
+import Card from '../../components/Card';
+import CardTitle from '../../components/CardTitle';
+import Range from '../../components/Range';
+import Typography from '../../components/Typography';
+import Amount from '../../components/Amount';
+import Button from '../../components/Button';
+
+const styles = ({ spacing }) => {
+  const gutter = spacing() / 2;
+
+  return {
+    container: {
+      display: 'flex',
+      margin: '0 auto',
+    },
+    '@media screen and (min-width: 765px)': {
+      container: {
+        maxWidth: '70vw',
+      },
+    },
+    termsList: {
+      display: 'flex',
+      flexFlow: 'row wrap',
+      marginLeft: -gutter,
+      marginRight: -gutter,
+    },
+    terms: {
+      padding: gutter,
+      flexGrow: 1,
+    },
+  };
+};
+
+const Simulator = ({ classes }) => {
   const dispatch = useDispatch();
-  const [value, setValue] =  useState(0);
-  const { amount, monthly, conditions } = useSelector(({ simulator }) => (simulator));
+  const [value, setValue] = useState(0);
+  const { amount, conditions } = useSelector(({ simulator }) => (simulator));
 
   useEffect(() => {
     dispatch(getSimulatorConditions());
-  }, [dispatch])
-
+  }, [dispatch]);
 
   return (
-    <div>
-      <div className="Card">
-        <h1 className="Typography">Valor Solicitado</h1>
+    <div className={classes.container}>
+      <Card>
+        <CardTitle>Valor Solicitado</CardTitle>
 
-        <span className="Typography">
-          <span className="Amount">R$ {value}</span>
-        </span>
+        <Amount>R$ {value}</Amount>
 
-        <span className="Typography">
+        <Typography>
           Valor bruto:
-          <span className="Amount">R$ {amount.total}</span>
+          <Amount>R$ {amount.total}</Amount>
           <span className="Tooltip" />
-        </span>
+        </Typography>
 
-        <div className="Slider">
-          <input type="range" list="marks" onChange={({ target: { value } }) => setValue(value)} />
+        <Range
+          value={value}
+          marks={conditions.terms}
+          min={conditions.amount[0]}
+          max={conditions.amount[4]}
+          onChange={({ target: { value } }) => setValue(value)}
+        />
 
-          <datalist id="marks">
-            {
-              conditions.terms.map((term, i) => (
-                <option value={i * 25}></option>
-              ))
-            }
-          </datalist>
-          <br />
-          <span className="Amount">R$ {conditions.amount[0]}</span>
-          <span className="Amount">R$ {conditions.amount[4]}</span>
-          <br />
-        </div>
-
-        <span className="Typography">Quantidade de parcelas</span>
+        <Typography>Quantidade de parcelas</Typography>
         <br />
 
-        {
-          conditions.terms.map((term) => (
-            <span className="Card">
-              <span className="Typography">
-                {term} meses
-                <span className="Amount">R$ {term}</span>
-                <br />
-              </span>
-            </span>
-          ))
-        }
+        <div className={classes.termsList}>
+          {
+            conditions.terms.map((term) => (
+              <div className={classes.terms}>
+                <Card background="primary" color="light">
+                  <Typography className="Typography">
+                    {term} meses
+                    <span>R$ {term}</span>
+                    <br />
+                  </Typography>
+                </Card>
+              </div>
+            ))
+          }
+        </div>
 
-        <button className="Button" type="button">Gostei, continuar</button>
+        <Button>Gostei, continuar</Button>
 
-        <small className="Typography">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptatibus numquam adipisci quidem repellat reprehenderit enim suscipit asperiores sed consectetur eaque, voluptatem rem? Quae, eum quibusdam! Obcaecati amet possimus in?</small>
-      </div>
+        <Typography variant="small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptatibus numquam adipisci quidem repellat reprehenderit enim suscipit asperiores sed consectetur eaque, voluptatem rem? Quae, eum quibusdam! Obcaecati amet possimus in?</Typography>
+      </Card>
     </div>
   );
 };
 
-export default Simulator;
+export default injectSheet(styles)(Simulator);
