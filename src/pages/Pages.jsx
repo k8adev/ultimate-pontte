@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Simulator from './Simulator';
 
 const Pages = () => (
