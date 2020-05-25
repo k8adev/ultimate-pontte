@@ -1,30 +1,17 @@
 import React from 'react';
-import { Provider as ReduxProvider } from 'react-redux';
-import jss from 'jss';
-import jssPresetDefault from 'jss-preset-default';
-import { SheetsRegistry, JssProvider } from 'react-jss';
-import resetJss from 'reset-jss';
+import { Provider } from 'react-redux';
 
 import store from './store';
 import Pages from './Pages';
 
-const stylesheet = (() => {
-  jss.setup(jssPresetDefault());
-
-  const sheetsRegistry = new SheetsRegistry();
-  const stylesheetGlobal = jss.createStyleSheet(resetJss).attach();
-
-  sheetsRegistry.add(stylesheetGlobal);
-
-  return sheetsRegistry;
-})();
+import Theme from './styles/Theme';
 
 const App = () => (
-  <ReduxProvider store={store}>
-    <JssProvider registry={stylesheet}>
+  <Provider store={store}>
+    <Theme>
       <Pages />
-    </JssProvider>
-  </ReduxProvider>
+    </Theme>
+  </Provider>
 );
 
 store.subscribe(() => console.log('store:', store.getState()));
