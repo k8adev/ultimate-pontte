@@ -20,7 +20,7 @@ const Normalize = ({ children }) => {
   const styles = useStyles();
 
   return (
-    <JssProvider registry={styles}>
+    <JssProvider registry={styles} classNamePrefix="pontte">
       { children }
     </JssProvider>
   );

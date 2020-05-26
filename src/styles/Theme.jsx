@@ -9,7 +9,7 @@ import typography from './typography';
 
 const Theme = ({ children }) => {
   const theme = {
-    colors,
+    ...colors,
     ...spacings,
     ...typography,
   };

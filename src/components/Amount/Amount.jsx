@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import React, { Fragment } from 'react';
 import injectSheet from 'react-jss';
 
 import Typography from '../Typography';
@@ -9,9 +9,9 @@ const styles = ({ colors, spacing, fontTypes }) => {
 
 const Amount = ({ classes, children }) => {
   return (
-    <Typography variant="span">
+    <Fragment>
       { children }
-    </Typography>
+    </Fragment>
   );
 };
 

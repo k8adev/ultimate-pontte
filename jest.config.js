@@ -10,5 +10,5 @@ module.exports = {
     'jss-snapshot-serializer',
   ],
   coverageDirectory: '<rootDir>/coverage',
-  collectCoverageFrom: ['src/**/*.js'],
+  collectCoverageFrom: ['src/**/*.jsx?'],
 };
