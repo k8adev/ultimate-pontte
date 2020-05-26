@@ -99,11 +99,11 @@ const Card = ({ classes, marks, min, max, onChange }) => {
 
       <div className={classes.amount}>
         <Typography element="span" variant="body2">
-          <Amount>R$ {min}</Amount>
+          <Amount value={min} />
         </Typography>
 
         <Typography element="span" variant="body2">
-          <Amount>R$ {max}</Amount>
+          <Amount value={max} />
         </Typography>
       </div>
     </div>

@@ -106,7 +106,7 @@ const Simulator = ({ classes }) => {
               display="block"
               paragraph
             >
-              <Amount>R$ {value}</Amount>
+              <Amount value={value} />
             </Typography>
 
             <Typography
@@ -115,7 +115,7 @@ const Simulator = ({ classes }) => {
               display="block"
               paragraph
             >
-              Valor bruto: <Amount>R$ {amount.total}</Amount>
+              Valor bruto: <Amount value={amount.total} />
             </Typography>
 
             <span className="Tooltip" />

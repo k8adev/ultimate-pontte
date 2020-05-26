@@ -1,18 +1,14 @@
-import React, { Fragment } from 'react';
-import injectSheet from 'react-jss';
+import React from 'react';
+import NumberFormat from 'react-number-format';
 
-import Typography from '../Typography';
+const Amount = ({ value }) => (
+  <NumberFormat
+    value={value}
+    displayType="text"
+    prefix="R$"
+    thousandSeparator="."
+    decimalSeparator=","
+  />
+);
 
-const styles = ({ colors, spacing, fontTypes }) => {
-  return {};
-};
-
-const Amount = ({ classes, children }) => {
-  return (
-    <Fragment>
-      { children }
-    </Fragment>
-  );
-};
-
-export default injectSheet(styles)(Amount);
+export default Amount;
