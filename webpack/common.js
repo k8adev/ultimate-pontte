@@ -1,12 +1,15 @@
-const { posix: { resolve } } = require('path');
+const { resolve } = require('path');
 const dotenv = require('dotenv');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 dotenv.config();
 
-const { NODE_ENV, PATH_PUBLIC } = process.env;
+const {
+  NODE_ENV,
+  PATH_PUBLIC,
+  PATH_SOURCE,
+} = process.env;
 const environment = {};
 
 const extractCss = () => (NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader');
@@ -14,9 +17,10 @@ const extractCss = () => (NODE_ENV === 'production' ? MiniCssExtractPlugin.loade
 module.exports = {
   mode: NODE_ENV,
   context: resolve(__dirname, '..'),
-  entry: './src/index.jsx',
+  entry: resolve(PATH_SOURCE, 'index.jsx'),
   output: {
     path: resolve(PATH_PUBLIC),
+    filename: '[name].[hash].js',
     publicPath: '/',
   },
   resolve: {
@@ -24,6 +28,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
       {
         test: /\.css$/,
         use: [
@@ -34,11 +43,6 @@ module.exports = {
           },
           'postcss-loader',
         ],
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,
@@ -59,14 +63,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin(Object.keys(environment).reduce((env, key) => ({
       ...env,
       [key]: JSON.stringify(environment[key]),
     }), {})),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
   ],
 };

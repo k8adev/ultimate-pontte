@@ -1,15 +1,31 @@
-const merge = require('webpack-merge');
+const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const { smart } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const common = require('./common');
 
-module.exports = merge.smart(common, {
+dotenv.config();
+
+const { PORT, PATH_SOURCE } = process.env;
+
+module.exports = smart(common, {
   module: {
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   enforce: 'pre',
-      //   exclude: /node_modules/,
-      //   loader: 'eslint-loader',
-      // },
+      {
+        test: /\.jsx?$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              emitError: true,
+            },
+          },
+        ],
+      },
       {
         test: /\.sass$/,
         use: [
@@ -41,11 +57,23 @@ module.exports = merge.smart(common, {
     ],
   },
   devServer: {
-    inline: true,
-    contentBase: './public',
-    port: 8080,
-    historyApiFallback: true,
+    port: PORT,
     hot: true,
+    hotOnly: true,
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /.*/,
+          to: 'index.html',
+        },
+      ],
+    },
   },
   devtool: 'source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(PATH_SOURCE, 'index.html'),
+    }),
+  ],
 });

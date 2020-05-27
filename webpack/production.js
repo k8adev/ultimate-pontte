@@ -1,18 +1,21 @@
+const path = require('path');
 const dotenv = require('dotenv');
-const merge = require('webpack-merge');
+const { smart } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-dotenv.config();
-
 const common = require('./common');
 
-module.exports = merge.smart(common, {
+dotenv.config();
+
+const { PATH_SOURCE } = process.env;
+
+module.exports = smart(common, {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: path.resolve(PATH_SOURCE, 'index.html'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
