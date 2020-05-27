@@ -1,5 +1,6 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
+import PropTypes from 'prop-types';
 
 const Amount = ({ value }) => (
   <NumberFormat
@@ -10,5 +11,9 @@ const Amount = ({ value }) => (
     decimalSeparator=","
   />
 );
+
+Amount.propTypes = {
+  value: PropTypes.number.isRequired,
+};
 
 export default Amount;

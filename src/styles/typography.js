@@ -1,14 +1,17 @@
-const fontFamily = 'Roboto';
+const fontFamily = 'Muli, sans-serif';
 
-const fontTypes = {
+const fontVariant = {
   h1: {
     fontSize: '2.6rem',
+    fontWeight: 700,
   },
   h2: {
     fontSize: '1.6rem',
+    fontWeight: 600,
   },
   h3: {
     fontSize: '1.4rem',
+    fontWeight: 600,
   },
   body1: {
     fontSize: '1.2rem',
@@ -24,7 +27,7 @@ const fontTypes = {
 
 const typography = {
   fontFamily,
-  fontTypes,
+  fontVariant,
 };
 
 export default {

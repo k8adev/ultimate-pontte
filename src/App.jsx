@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import Pages from './Pages';
+import Pages from './pages';
 
 import Theme from './styles/Theme';
 
@@ -13,7 +13,7 @@ const App = () => (
     </Theme>
   </Provider>
 );
-
+/* eslint-disable */
 store.subscribe(() => console.log('store:', store.getState()));
 
 export default App;

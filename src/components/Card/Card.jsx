@@ -2,11 +2,11 @@ import { createElement } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
-const styles = ({ palette, spacing }) => {
+const styles = ({ palette, spacing, borderRadius }) => {
   const cardCommon = {
+    borderRadius,
     padding: spacing(2),
     position: 'relative',
-    borderRadius: 20,
     borderWidth: 1,
     borderStyle: 'solid',
     outline: 'none',

@@ -58,8 +58,9 @@ module.exports = smart(common, {
   },
   devServer: {
     port: PORT,
-    hot: true,
-    hotOnly: true,
+    hot: false,
+    hotOnly: false,
+    // contentBase: '/public',
     historyApiFallback: {
       rewrites: [
         {

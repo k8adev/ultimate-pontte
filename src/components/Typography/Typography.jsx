@@ -20,12 +20,20 @@ const styles = (theme) => {
     'h3',
   ];
 
-  const typographyCommon = {
+  const typographyCommon = (fontVariant) => ({
     ...Typography,
     textAlign: ({ align }) => align,
     display: ({ display }) => display,
     color: ({ color }) => palette[color],
-    marginBottom: ({ variant, paragraph }) => {
+    marginBottom: ({
+      marginBottom,
+      variant,
+      paragraph,
+    }) => {
+      if (marginBottom) {
+        return spacing(marginBottom);
+      }
+
       if (!paragraph) {
         return 0;
       }
@@ -36,13 +44,20 @@ const styles = (theme) => {
 
       return spacing();
     },
-  };
+    fontWeight: ({ bold: fontWeight }) => {
+      if (fontWeight === null) {
+        return fontVariant?.fontWeight;
+      }
 
-  const typographyVariant = Object.keys(typography.fontTypes).reduce((props, type) => ({
+      return fontWeight === true ? 'bold' : fontWeight;
+    },
+  });
+
+  const typographyVariant = Object.keys(typography.fontVariant).reduce((props, type) => ({
     ...props,
     [type]: {
-      ...typography.fontTypes[type],
-      ...typographyCommon,
+      ...typography.fontVariant[type],
+      ...typographyCommon(typography.fontVariant[type]),
     },
   }), {});
 
@@ -100,6 +115,12 @@ Typography.propTypes = {
     'right',
     'center',
   ]),
+  bold: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
+  marginBottom: PropTypes.number,
 };
 
 Typography.defaultProps = {
@@ -109,6 +130,8 @@ Typography.defaultProps = {
   paragraph: false,
   display: null,
   align: 'inherit',
+  bold: null,
+  marginBottom: null,
 };
 
 export default injectSheet(styles)(Typography);
