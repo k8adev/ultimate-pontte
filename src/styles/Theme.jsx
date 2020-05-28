@@ -1,5 +1,3 @@
-import 'typeface-muli';
-
 import React from 'react';
 import { ThemeProvider } from 'react-jss';
 import PropTypes from 'prop-types';
