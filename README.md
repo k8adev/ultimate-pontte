@@ -5,7 +5,7 @@
 
 Developed with ❤ and [React](https://reactjs.org/), [Redux](https://react-redux.js.org/) and [Redux Saga](https://redux-saga.js.org/), *Saga for the first time!* and [JSS](https://cssinjs.org/react-jss).
 
-## 👩🏻‍💻Coding Challenge
+## 👩🏻‍💻 Coding Challenge
 
 Instructions for coding challenge [here](https://github.com/pontte/frontend-challenge).
 

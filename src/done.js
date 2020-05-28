@@ -1,6 +1,11 @@
+/**
+ * @module done uses external @module canvas-confetti
+ * @see {@link https://github.com/catdad/canvas-confetti}
+ */
 import confetti from 'canvas-confetti';
 
 /**
+ * @function fireworks
  * @author {@link https://www.kirilv.com/canvas-confetti/}
  */
 const fireworks = () => {

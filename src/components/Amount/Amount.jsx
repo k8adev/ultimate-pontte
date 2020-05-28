@@ -1,3 +1,7 @@
+/**
+ * @module Amount uses external @module react-countup
+ * @see {@link https://github.com/glennreyes/react-countup}
+ */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useCountUp } from 'react-countup';

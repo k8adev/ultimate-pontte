@@ -1,5 +1,5 @@
 /**
- * Inspired by Material UI Typography component.
+ * @module Typography was inspired on Material UI Typography.
  * @see {@link https://material-ui.com/components/typography/#typography}
  */
 import { createElement } from 'react';
