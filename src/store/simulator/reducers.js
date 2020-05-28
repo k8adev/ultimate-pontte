@@ -1,5 +1,4 @@
 export const initialState = {
-  conditions: [],
   amounts: [],
   amountsTotal: [],
   terms: [],

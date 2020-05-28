@@ -160,9 +160,7 @@ const SimulatorConditions = ({ classes }) => {
 
     dispatch(changeUserConditions({
       condition,
-      amount: simulator.amounts[i],
-      amountTotal: simulator.amountsTotal[i],
-      terms: null,
+      termsCondition: null,
     }));
 
     setRangeValue(i);
@@ -171,7 +169,9 @@ const SimulatorConditions = ({ classes }) => {
   };
 
   const onChangeRange = ({ target: { value: i } }) => changeData(i);
-  const onClickTerm = ({ target: { value: i } }) => dispatch(changeUserConditions({ terms: i }));
+  const onClickTerm = ({ target: { value: i } }) => (
+    dispatch(changeUserConditions({ termsCondition: i }))
+  );
   const onClickButton = done;
 
   useEffect(() => changeData(0), [simulator]);
@@ -236,7 +236,7 @@ const SimulatorConditions = ({ classes }) => {
                 variant="primary"
                 value={i}
                 onClick={onClickTerm}
-                focused={user.terms === i}
+                focused={user.termsCondition === i}
                 hallow
               >
                 <Typography
@@ -265,7 +265,7 @@ const SimulatorConditions = ({ classes }) => {
         <button
           type="button"
           className={classes.button}
-          disabled={user.terms === null}
+          disabled={user.termsCondition === null}
           onClick={onClickButton}
         >
           <Typography

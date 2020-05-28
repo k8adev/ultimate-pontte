@@ -26,6 +26,7 @@
     "reset-jss": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.1",
     "autoprefixer": "^9.8.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",

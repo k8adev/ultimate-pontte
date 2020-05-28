@@ -62,7 +62,7 @@ const styles = (props) => {
 
 const Simulator = ({ classes }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector(({ user }) => ({ user }));
+  const { user, simulator } = useSelector(({ user, simulator }) => ({ user, simulator }));
 
   useEffect(() => {
     dispatch(getSimulatorConditions());
@@ -76,7 +76,7 @@ const Simulator = ({ classes }) => {
           variant="h2"
           color="secondary"
         >
-          Valor Solicitado
+          Valor solicitado
         </Typography>
       </div>
 
@@ -89,7 +89,7 @@ const Simulator = ({ classes }) => {
               display="block"
               paragraph
             >
-              <Amount value={user.amount} />
+              <Amount value={simulator.amounts[user.condition]} />
             </Typography>
 
             <Typography
@@ -99,7 +99,7 @@ const Simulator = ({ classes }) => {
               paragraph
               bold
             >
-              Valor bruto: <Amount value={user.amountTotal} />
+              Valor bruto: <Amount value={simulator.amountsTotal[user.condition]} />
             </Typography>
 
             <span className="Tooltip" />
