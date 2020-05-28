@@ -28,26 +28,3 @@ jobs:
 
     - name: Run lint test
       run: npm run lint
-
-  test-unit:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-node@v1
-
-    - uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-build-node-modules-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-node-modules
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
-
-    - name: Install dependencies
-      run: npm install --no-package-lock --no-save
-
-    - name: Run unit test
-      run: npm run unit

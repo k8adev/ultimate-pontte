@@ -6,6 +6,7 @@ Developed with ❤ and [React](https://reactjs.org/), [Redux](https://react-redu
 ## Expected
 
 ### Result expected
+Instructions for coding challenge [here](https://github.com/pontte/frontend-challenge).
 
 ![](https://github.com/pontte/frontend-challenge/raw/master/image/screen.png)
 
@@ -17,10 +18,62 @@ Bônus 🎉
 
 ![](result-2.gif)
 
-## Run
+## Basics
+
+The project has the following structure.
+
+```sh
+src
+│
+└── components
+│    │
+│    └── Amount
+│    │
+│    └── Card
+│    │
+│    └── Typography
+│
+└── pages
+│    │
+│    └── Simulator
+│
+└── styles
+│    │
+│    └── theme
+│        │
+│        └── standard
+│
+└── store
+    │
+    └── simulator
+    │
+    └── user
+```
+
+## Usage
+
+### Clone
 
 ```sh
 git clone git@github.com:keitoliveira/ultimate-pontte.git
 cd ultimate-pontte
-npm install && npm start
+npm install
+```
+
+### Install dependencies
+
+```sh
+npm install
+```
+
+### Run in developer mode
+
+```sh
+npm start
+```
+
+### Run for production
+
+```sh
+npm run build
 ```
