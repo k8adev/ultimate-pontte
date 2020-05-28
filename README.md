@@ -1,12 +1,15 @@
 # Ultimate Pontte
-> Coding Challenge for Front-End position at @pontte 💸
+> Coding Challenge for Front-End position at [@pontte](https://github.com/pontte) 💸
+
+![promote-dev](https://github.com/keitoliveira/ultimate-pontte/workflows/promote-dev/badge.svg)
 
 Developed with ❤ and [React](https://reactjs.org/), [Redux](https://react-redux.js.org/) and [Redux Saga](https://redux-saga.js.org/), *Saga for the first time!* and [JSS](https://cssinjs.org/react-jss).
 
-## Expected
+## 👩🏻‍💻Coding Challenge
+
+Instructions for coding challenge [here](https://github.com/pontte/frontend-challenge).
 
 ### Result expected
-Instructions for coding challenge [here](https://github.com/pontte/frontend-challenge).
 
 ![](https://github.com/pontte/frontend-challenge/raw/master/image/screen.png)
 
@@ -14,11 +17,13 @@ Instructions for coding challenge [here](https://github.com/pontte/frontend-chal
 
 ![](result-1.gif)
 
-Bônus 🎉
+It was only developed to work correctly in browser Chromium's base like Google Chrome and Microsoft Edge ❤
+
+### Bônus result 🎉
 
 ![](result-2.gif)
 
-## Basics
+## 📁 Project basics
 
 The project has the following structure.
 
@@ -50,7 +55,7 @@ src
     └── user
 ```
 
-## Usage
+## 🔨 Usage
 
 ### Clone
 
