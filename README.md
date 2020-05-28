@@ -19,7 +19,7 @@ Instructions for coding challenge [here](https://github.com/pontte/frontend-chal
 
 It was only developed to work correctly in browser Chromium's base like Google Chrome and Microsoft Edge ❤
 
-### Bônus result 🎉
+### Bonus result 🎉
 
 ![](result-2.gif)
 
@@ -88,3 +88,7 @@ npm start
 ```sh
 npm run build
 ```
+
+That's all folks 🎊
+
+![](https://i.kym-cdn.com/photos/images/original/001/224/091/cff.gif)
