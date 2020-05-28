@@ -60,7 +60,6 @@ module.exports = smart(common, {
     port: PORT,
     hot: false,
     hotOnly: false,
-    // contentBase: '/public',
     historyApiFallback: {
       rewrites: [
         {

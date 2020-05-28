@@ -9,8 +9,9 @@ const {
   NODE_ENV,
   PATH_PUBLIC,
   PATH_SOURCE,
+  API,
 } = process.env;
-const environment = {};
+const environment = { API };
 
 const extractCss = () => (NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader');
 

@@ -6,27 +6,15 @@ import PropTypes from 'prop-types';
 
 import Normalize from './Normalize';
 
-import colors from './colors';
-import spacings from './spacings';
-import typography from './typography';
-import breakpoints from './breakpoints';
+import standard from './theme/standard';
 
-const Theme = ({ children }) => {
-  const theme = {
-    ...colors,
-    ...spacings,
-    ...typography,
-    ...breakpoints,
-  };
-
-  return (
-    <Normalize>
-      <ThemeProvider theme={theme}>
-        { children }
-      </ThemeProvider>
-    </Normalize>
-  );
-};
+const Theme = ({ children }) => (
+  <Normalize>
+    <ThemeProvider theme={standard}>
+      { children }
+    </ThemeProvider>
+  </Normalize>
+);
 
 Theme.propTypes = {
   children: PropTypes.node.isRequired,

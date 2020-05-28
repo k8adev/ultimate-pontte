@@ -1,6 +1,6 @@
-export const linearGradient = (dir, ...colors) => `linear-gradient(to ${dir}, ${colors.join(', ')})`;
-export const boxShadow = (...args) => args.join(' ');
-export const transition = (...args) => args.join(' ');
+const linearGradient = (dir, ...colors) => `linear-gradient(to ${dir}, ${colors.join(', ')})`;
+const boxShadow = (...args) => args.join(' ');
+const transition = (...args) => args.join(' ');
 
 const light = '#ffffff';
 

@@ -1,19 +1,32 @@
-import React from 'react';
-import NumberFormat from 'react-number-format';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useCountUp } from 'react-countup';
 
-const Amount = ({ value }) => (
-  <NumberFormat
-    value={value}
-    displayType="text"
-    prefix="R$"
-    thousandSeparator="."
-    decimalSeparator=","
-  />
-);
+const Amount = ({ value, currency }) => {
+  const formattingFn = new Intl.NumberFormat('pt-BR', { currency, style: 'currency' }).format;
+  const { countUp, update } = useCountUp({
+    end: value,
+    duration: 0.2,
+    formattingFn,
+  });
+
+  useEffect(() => update(value), [value]);
+
+  return (
+    <React.Fragment>
+      { countUp }
+    </React.Fragment>
+  );
+};
 
 Amount.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
+  currency: PropTypes.oneOf(['BRL']),
+};
+
+Amount.defaultProps = {
+  value: 0,
+  currency: 'BRL',
 };
 
 export default Amount;

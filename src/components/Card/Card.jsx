@@ -2,37 +2,45 @@ import { createElement } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
-const styles = ({ palette, spacing, borderRadius }) => {
-  const cardCommon = {
-    borderRadius,
-    padding: spacing(2),
-    position: 'relative',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    outline: 'none',
-    cursor: ({ element }) => (element === 'button' ? 'pointer' : 'initial'),
-  };
+const TYPE_BUTTON = 'button';
 
-  const cardVariant = {
+const styles = ({ palette, spacing, borderRadius }) => {
+  const cursor = ({ element }) => (
+    element === TYPE_BUTTON ? 'pointer' : 'initial'
+  );
+
+  const primaryColorCommon = ({ focused, hallow }) => (
+    focused || !hallow ? palette.secondary : palette.primary
+  );
+
+  const card = {
+    default: {
+      borderRadius,
+      padding: spacing(2),
+      position: 'relative',
+      borderWidth: 1,
+      borderStyle: 'solid',
+      outline: 'none',
+    },
     primary: {
-      ...cardCommon,
-      borderColor: palette.primary,
-      color: ({ hallow }) => (hallow ? palette.primary : palette.secondary),
-      backgroundColor: ({ hallow }) => (hallow ? 'transparent' : palette.primary),
-      '&.selected': () => ({
-        color: palette.primary,
-        backgroundColor: 'transparent',
-      }),
+      cursor,
+      composes: ['$default'],
+      borderColor: primaryColorCommon,
+      color: primaryColorCommon,
+      backgroundColor: ({ focused, hallow }) => (
+        focused || !hallow ? palette.primary : 'transparent'
+      ),
     },
     secondary: {
-      ...cardCommon,
+      cursor,
+      composes: ['$default'],
       borderColor: palette.secondary,
       color: palette.primary,
       backgroundColor: palette.secondary,
     },
   };
 
-  return cardVariant;
+  return card;
 };
 
 const Card = (props) => {
@@ -46,15 +54,23 @@ const Card = (props) => {
   } = props;
 
   const className = classes[variant];
+  const typeProps = {};
 
-  const handlerClick = (...onClickArguments) => {
-    onClick.call(...onClickArguments);
-  };
+  if (type === TYPE_BUTTON) {
+    Object.assign(typeProps, {
+      type,
+      /**
+       * Can't prevent event bubbling so, this palliative solution
+       * simulates object structure of @event click.
+       */
+      onClick: () => onClick({ target: { value } }),
+    });
+  }
 
   return createElement(type, {
     className,
     value,
-    onClick: handlerClick,
+    ...typeProps,
   }, [children]);
 };
 
@@ -63,13 +79,14 @@ Card.propTypes = {
   children: PropTypes.node.isRequired,
   element: PropTypes.oneOf([
     'div',
-    'button',
+    TYPE_BUTTON,
   ]),
   variant: PropTypes.oneOf([
     'primary',
     'secondary',
   ]),
   hallow: PropTypes.bool,
+  focused: PropTypes.bool,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
@@ -83,6 +100,7 @@ Card.defaultProps = {
   element: 'div',
   variant: 'secondary',
   hallow: false,
+  focused: false,
   value: null,
   onClick: () => {},
 };

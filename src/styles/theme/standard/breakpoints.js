@@ -1,3 +1,7 @@
+/**
+ * Inspired by Material UI Breakpoints system.
+ * @see {@link https://material-ui.com/customization/breakpoints/}
+ */
 const sizes = {
   xs: 0,
   sm: 600,

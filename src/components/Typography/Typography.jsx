@@ -100,6 +100,7 @@ Typography.propTypes = {
     'primary',
     'secondary',
     'brand1',
+    'inherit',
   ]),
   block: PropTypes.bool,
   paragraph: PropTypes.bool,
@@ -126,7 +127,7 @@ Typography.propTypes = {
 Typography.defaultProps = {
   element: 'p',
   variant: 'body1',
-  color: 'primary',
+  color: 'inherit',
   paragraph: false,
   display: null,
   align: 'inherit',

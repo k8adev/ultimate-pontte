@@ -1,14 +1,15 @@
+import { SET_USER_CONDITIONS } from './types';
+
 export const initialState = {
-  conditions: [],
-  amounts: [],
-  amountsTotal: [],
-  terms: [],
-  termsInstallments: [],
+  condition: 0,
+  termsInstallmentsCondition: 0,
+  amount: 0,
+  amountTotal: 0,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'SET_SIMULATOR':
+    case SET_USER_CONDITIONS:
       return {
         ...state,
         ...payload,
