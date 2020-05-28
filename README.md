@@ -25,6 +25,8 @@ It was only developed to work correctly in browser Chromium's base like Google C
 
 ## 📁 Project basics
 
+### Structure
+
 The project has the following structure.
 
 ```sh
@@ -54,6 +56,10 @@ src
     │
     └── user
 ```
+
+### Build
+
+Libraries and/or tools as [dotenv](https://www.npmjs.com/package/dotenv), [webpack](https://www.npmjs.com/package/webpack), [eslint](https://www.npmjs.com/package/eslint), babel, [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb) and [babel-preset-airbnb](https://www.npmjs.com/package/babel-preset-airbnb) was used in development.
 
 ## 🔨 Usage
 
