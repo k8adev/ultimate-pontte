@@ -9,8 +9,7 @@
     "build": "webpack --config webpack/production.js",
     "lint": "eslint src"
   },
-  "author": "Keit Oliveira",
-  "license": "ISC",
+  "author": "Keit Oliveira <keitoliveira@outlook.com>",
   "dependencies": {
     "canvas-confetti": "^1.2.0",
     "deepmerge": "^4.2.2",
